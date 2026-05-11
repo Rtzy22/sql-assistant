@@ -246,7 +246,8 @@ sql-assistant/
 │           ├── ResultTable.vue        # 查询结果折叠表格
 │           └── MfaDialog.vue          # MFA 验证码弹框
 ├── curl/
-│   ├── curls.txt                      # 工单 API 参考（curl 抓包）
+│   └── curls.txt                      # 工单 API 参考（curl 抓包）
+├── db/
 │   └── migrate_project.sql            # 数据库完整 DDL
 ├── vite.config.js
 ├── package.json
