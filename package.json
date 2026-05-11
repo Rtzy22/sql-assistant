@@ -1,0 +1,72 @@
+{
+  "name": "sql-assistant",
+  "version": "1.0.0",
+  "description": "数据迁移排障智能问答助手",
+  "main": "src/main/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "electron .",
+    "dev:electron": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron . --dev\"",
+    "pack": "vite build && electron-builder --win --dir",
+    "dist": "vite build && electron-builder --win"
+  },
+  "build": {
+    "appId": "com.wps.sql-assistant",
+    "productName": "SQL Assistant",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/main/**/*",
+      "src/preload/**/*",
+      "dist/renderer/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "curl/migrate_project.sql",
+        "to": "curl/migrate_project.sql"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "concurrently": "^9.0.0",
+    "electron": "^42.0.1",
+    "electron-builder": "^26.8.1",
+    "vite": "^6.0.0",
+    "wait-on": "^8.0.0"
+  },
+  "dependencies": {
+    "@vicons/ionicons5": "^0.12.0",
+    "highlight.js": "^11.10.0",
+    "marked": "^15.0.0",
+    "naive-ui": "^2.40.0",
+    "vue": "^3.5.0"
+  }
+}
